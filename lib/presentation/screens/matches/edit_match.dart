@@ -70,167 +70,165 @@ class EditMatch extends StatelessWidget {
                       ),
                     )
                 ),
-                Container(
-                  child: InkWell(
-                    onTap: (){
+                InkWell(
+                  onTap: (){
 
-                    },
-                    child: Container(
-                      height: MediaQuery.of(context).size.height*.5,
-                      margin: const EdgeInsets.symmetric(
-                          horizontal: 10,
-                          vertical: 10
-                      ),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                      ),
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(6),
-                        color:  const Color(0Xff000f2c),
-                      ),
+                  },
+                  child: Container(
+                    height: MediaQuery.of(context).size.height*.5,
+                    margin: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 10
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                    ),
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(6),
+                      color:  const Color(0Xff000f2c),
+                    ),
 
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
 
-                          const SizedBox(height: 10,),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(dateTime,style: GoogleFonts.roboto(
-                                color: Colors.white,
-                                fontSize: 16,
-                              ),),
-
-                            ],
-                          ),
-                          const SizedBox(height: 5,),
-
-
-                          Text(clock,
-                            style: GoogleFonts.roboto(
+                        const SizedBox(height: 10,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(dateTime,style: GoogleFonts.roboto(
                               color: Colors.white,
-                              fontSize: 15,
+                              fontSize: 16,
                             ),),
 
-                          SizedBox(height: MediaQuery.of(context).size.height*.03,),
+                          ],
+                        ),
+                        const SizedBox(height: 5,),
 
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      height: MediaQuery.of(context).size.height*.05,
-                                      width: MediaQuery.of(context).size.height*.07,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(50)
-                                      ),
-                                      child: CachedNetworkImage(
-                                        cacheManager: AppCubit.get(context).manager,
-                                        imageUrl: firstImage,
-                                        placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
-                                        fit: BoxFit.cover,
-                                      ) ,
+
+                        Text(clock,
+                          style: GoogleFonts.roboto(
+                            color: Colors.white,
+                            fontSize: 15,
+                          ),),
+
+                        SizedBox(height: MediaQuery.of(context).size.height*.03,),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    height: MediaQuery.of(context).size.height*.05,
+                                    width: MediaQuery.of(context).size.height*.07,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(50)
                                     ),
-                                    const  SizedBox(height: 5,),
-                                    Text(firstName,style: GoogleFonts.roboto(
-                                      color: Colors.white,
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.bold,
+                                    child: CachedNetworkImage(
+                                      cacheManager: AppCubit.get(context).manager,
+                                      imageUrl: firstImage,
+                                      placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
+                                      fit: BoxFit.cover,
+                                    ) ,
+                                  ),
+                                  const  SizedBox(height: 5,),
+                                  Text(firstName,style: GoogleFonts.roboto(
+                                    color: Colors.white,
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                    textAlign: TextAlign.center,
+                                  ),
+
+                                  const  SizedBox(height: 20,),
+
+                                  Padding(
+                                    padding:EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.height*.035,vertical: MediaQuery.of(context).size.height*.025),
+                                    child: EditFormField(
+                                        hint: '',
+                                        radies: 15,
+                                        filledColor: true,
+                                        controller: firstScore,
+                                        textInputType: TextInputType.number
                                     ),
-                                      textAlign: TextAlign.center,
-                                    ),
+                                  ),
 
-                                    const  SizedBox(height: 20,),
+                                ],
 
-                                    Padding(
-                                      padding:EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.height*.02,vertical: MediaQuery.of(context).size.height*.02),
-                                      child: EditFormField(
-                                          hint: '',
-                                          radies: 15,
-                                          filledColor: true,
-                                          controller: firstScore,
-                                          textInputType: TextInputType.number
-                                      ),
-                                    ),
-
-                                  ],
-
-                                ),
                               ),
+                            ),
 
-                              const SizedBox(width: 25,),
+                            const SizedBox(width: 25,),
 
-                              const SizedBox(width: 25,),
+                            const SizedBox(width: 25,),
 
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      height: MediaQuery.of(context).size.height*.05,
-                                      width: MediaQuery.of(context).size.height*.07,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(50)
-                                      ),
-                                      child: CachedNetworkImage(
-                                        cacheManager: AppCubit.get(context).manager,
-                                        imageUrl: secondImage,
-                                        placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
-                                        fit: BoxFit.cover,
-                                      ) ,
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    height: MediaQuery.of(context).size.height*.05,
+                                    width: MediaQuery.of(context).size.height*.07,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(50)
                                     ),
+                                    child: CachedNetworkImage(
+                                      cacheManager: AppCubit.get(context).manager,
+                                      imageUrl: secondImage,
+                                      placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
+                                      fit: BoxFit.cover,
+                                    ) ,
+                                  ),
 
-                                    const SizedBox(height: 5,),
-                                    Text(secondName!,style: GoogleFonts.roboto(
-                                      color: Colors.white,
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                      textAlign: TextAlign.center,
-                                    ),
+                                  const SizedBox(height: 5,),
+                                  Text(secondName!,style: GoogleFonts.roboto(
+                                    color: Colors.white,
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                    textAlign: TextAlign.center,
+                                  ),
 
-                                    const  SizedBox(height: 20,),
+                                  const  SizedBox(height: 20,),
 
-                                    Padding(
-                                      padding:EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.height*.02,vertical: 9),
-                                      child: EditFormField(
-                                          hint: '',
-                                          radies: 25,
-                                          filledColor: true,
-                                          controller: secondScore,
-                                          textInputType: TextInputType.number
-                                      ),
+                                  Padding(
+                                    padding:EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.height*.035,vertical: MediaQuery.of(context).size.height*.025),
+                                    child: EditFormField(
+                                        hint: '',
+                                        radies: 25,
+                                        filledColor: true,
+                                        controller: secondScore,
+                                        textInputType: TextInputType.number
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
+                        ),
 
-                          const SizedBox(height: 20,),
+                        const SizedBox(height: 20,),
 
-                          defaultButton(
-                            textColor: Colors.white,
-                            buttonText: 'Update',
-                            buttonColor: const Color(0Xffd32330),
-                            width: size.width * .6,
-                            height: size.height * .06,
-                            function: () {
-                                  cubit.updateMatch(
-                                      doc: doc,
-                                      index: index,
-                                      firstScore: firstScore.text,
-                                      secondScore: secondScore.text
-                                  );
-                            },
-                          ),
-                        ],
-                      ),
+                        defaultButton(
+                          textColor: Colors.white,
+                          buttonText: 'Update',
+                          buttonColor: const Color(0Xffd32330),
+                          width: size.width * .6,
+                          height: size.height * .06,
+                          function: () {
+                                cubit.updateMatch(
+                                    doc: doc,
+                                    index: index,
+                                    firstScore: firstScore.text,
+                                    secondScore: secondScore.text
+                                );
+                          },
+                        ),
+                      ],
                     ),
                   ),
                 ),

@@ -35,7 +35,7 @@ class MatchesModel{
 
   Map <String , dynamic> toMap(){
     return{
-      'fisrtTeam':firstTeam,
+      'firstTeam':firstTeam,
       'secondTeam':secondTeam,
       'firstImage':firstImage,
       'secondImage':secondImage,

@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fanchat_admin/business_logic/cubit/app_states.dart';
+import 'package:fanchat_admin/presentation/screens/matches/add_match.dart';
 import 'package:fanchat_admin/presentation/screens/matches/edit_match.dart';
 import 'package:fanchat_admin/presentation/widgets/shared_widgets.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,9 @@ import '../../../business_logic/cubit/app_cubit.dart';
 
 class ShowAllMatches extends StatefulWidget {
   const ShowAllMatches({Key? key}) : super(key: key);
+
+  static String doc='20 Nov';
+  static String day='Sun';
 
   @override
   State<ShowAllMatches> createState() => _ShowAllMatchesState();
@@ -76,7 +80,8 @@ class _ShowAllMatchesState extends State<ShowAllMatches> {
                                     decoration: const BoxDecoration(
                                         image: DecorationImage(
                                           image: AssetImage('assets/images/public_chat_image.jpeg'),
-                                          fit: BoxFit.cover,                                      )
+                                          fit: BoxFit.cover,
+                                        )
                                     ),
                                     child: SizedBox(
                                       width: double.infinity,
@@ -92,6 +97,8 @@ class _ShowAllMatchesState extends State<ShowAllMatches> {
                                                   AppCubit.get(context).isDay[index]=! AppCubit.get(context).isDay[index];
                                                 });
 
+                                                ShowAllMatches.doc=dateMatchs[index];
+                                                ShowAllMatches.day=dayMatchs[index];
                                                 AppCubit.get(context).getAllMatches(doc: dateMatchs[index]);
                                               },
                                               child: Container(
@@ -355,6 +362,26 @@ class _ShowAllMatchesState extends State<ShowAllMatches> {
                 ),
               ),
             ],
+          ),
+          floatingActionButton: FloatingActionButton.extended(
+              backgroundColor: Colors.red,
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (_){
+
+                  return AddMatch(
+                    doc: ShowAllMatches.doc ,
+                    day: ShowAllMatches.day ,
+                    index: AppCubit.get(context).allMatches.length+1,
+                  );
+
+                }));
+              },
+              label: Text('Add Match',style: GoogleFonts.roboto(
+                fontSize: MediaQuery.of(context).size.height*.02,
+                color: Colors.white,
+                fontWeight: FontWeight.w400
+              ),),
+              icon: const Icon(Icons.add),
           ),
         );
       },
