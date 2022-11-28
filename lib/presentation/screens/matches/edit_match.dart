@@ -15,6 +15,7 @@ class EditMatch extends StatelessWidget {
   final String secondImage;
   final String dateTime;
   final String clock;
+  final String doc;
 
   static TextEditingController firstScore =TextEditingController();
   static TextEditingController secondScore =TextEditingController();
@@ -28,6 +29,7 @@ class EditMatch extends StatelessWidget {
         required this.secondName,
         required this.dateTime,
         required this.clock,
+        required this.doc,
       }) : super(key: key);
 
   @override

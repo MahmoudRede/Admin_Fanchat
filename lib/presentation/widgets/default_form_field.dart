@@ -36,9 +36,11 @@ class DefaultFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+
       textAlign: filledColor==false?TextAlign.start: TextAlign.center,
       decoration: InputDecoration(
         hintText: hint,
+
         filled: true,
         iconColor: Colors.white,
         fillColor: filledColor==false? const Color(0Xff000f2c).withOpacity(.5):Colors.white,
@@ -58,7 +60,7 @@ class DefaultFormField extends StatelessWidget {
       ),
       style:GoogleFonts.roboto(
         color: filledColor==false? Colors.white:Colors.black,
-        fontSize: MediaQuery.of(context).size.height*0.022,
+        fontSize:  filledColor==false? MediaQuery.of(context).size.height*0.022:MediaQuery.of(context).size.height*0.05,
       ),
       maxLines: maxLines,
       controller: controller,

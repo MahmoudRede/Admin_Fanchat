@@ -191,6 +191,7 @@ class _ShowAllMatchesState extends State<ShowAllMatches> {
                                                                 secondImage:AppCubit.get(context).allMatches[index].secondImage!,
                                                                 secondName: AppCubit.get(context).allMatches[index].secondTeam!,
                                                                 dateTime: AppCubit.get(context).allMatches[index].date!,
+                                                                doc:  AppCubit.get(context).allMatches[index].doc!,
                                                                 clock: '${AppCubit.get(context).allMatches[index].clock!+ DateTime.now().timeZoneOffset.inHours}:00 PM',
                                                               );
                                                             }));
