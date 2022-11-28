@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fanchat_admin/business_logic/cubit/app_cubit.dart';
 import 'package:fanchat_admin/business_logic/cubit/app_states.dart';
 import 'package:fanchat_admin/presentation/widgets/default_form_field.dart';
+import 'package:fanchat_admin/presentation/widgets/edit_form_field.dart';
 import 'package:fanchat_admin/presentation/widgets/shared_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,6 +17,7 @@ class EditMatch extends StatelessWidget {
   final String dateTime;
   final String clock;
   final String doc;
+  final int index;
 
   static TextEditingController firstScore =TextEditingController();
   static TextEditingController secondScore =TextEditingController();
@@ -30,12 +32,23 @@ class EditMatch extends StatelessWidget {
         required this.dateTime,
         required this.clock,
         required this.doc,
+        required this.index,
       }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit,AppStates>(
         listener: (context,state){
+
+          if(state is UpdateMatchSuccessState){
+
+            customToast(title: 'Match Update', color: Colors.blue);
+
+            firstScore.text='';
+            secondScore.text='';
+            Navigator.pop(context);
+
+          }
 
         },
         builder: (context,state){
@@ -63,7 +76,7 @@ class EditMatch extends StatelessWidget {
 
                     },
                     child: Container(
-                      height: MediaQuery.of(context).size.height*.45,
+                      height: MediaQuery.of(context).size.height*.5,
                       margin: const EdgeInsets.symmetric(
                           horizontal: 10,
                           vertical: 10
@@ -135,10 +148,10 @@ class EditMatch extends StatelessWidget {
                                     const  SizedBox(height: 20,),
 
                                     Padding(
-                                      padding:EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.height*.02,vertical: 9),
-                                      child: DefaultFormField(
+                                      padding:EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.height*.02,vertical: MediaQuery.of(context).size.height*.02),
+                                      child: EditFormField(
                                           hint: '',
-                                          radies: 25,
+                                          radies: 15,
                                           filledColor: true,
                                           controller: firstScore,
                                           textInputType: TextInputType.number
@@ -185,7 +198,7 @@ class EditMatch extends StatelessWidget {
 
                                     Padding(
                                       padding:EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.height*.02,vertical: 9),
-                                      child: DefaultFormField(
+                                      child: EditFormField(
                                           hint: '',
                                           radies: 25,
                                           filledColor: true,
@@ -208,7 +221,12 @@ class EditMatch extends StatelessWidget {
                             width: size.width * .6,
                             height: size.height * .06,
                             function: () {
-
+                                  cubit.updateMatch(
+                                      doc: doc,
+                                      index: index,
+                                      firstScore: firstScore.text,
+                                      secondScore: secondScore.text
+                                  );
                             },
                           ),
                         ],

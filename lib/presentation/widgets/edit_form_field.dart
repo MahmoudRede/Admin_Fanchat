@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 
 
-class DefaultFormField extends StatelessWidget {
+class EditFormField extends StatelessWidget {
 
   final String hint;
   final bool isPassword;
@@ -11,19 +11,15 @@ class DefaultFormField extends StatelessWidget {
   final TextEditingController controller;
   double ?radies;
   bool ?filledColor;
-  IconData? suffixIcon;
-  Function? suffixFunction;
   Widget? prefixWidget;
   String? validText;
   int? maxLines;
 
-  DefaultFormField({
+  EditFormField({
     required this.hint,
     required this.controller,
     required this.textInputType,
     this.isPassword=false,
-    this.suffixIcon,
-    this.suffixFunction,
     this.prefixWidget,
     this.radies=15.0,
     this.filledColor=false,
@@ -49,18 +45,17 @@ class DefaultFormField extends StatelessWidget {
           color: filledColor==false? Colors.white:Colors.black,
         ),
         border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15.0),
-            borderSide: const BorderSide(
-              color: Colors.yellow,
-              width: 2
+            borderRadius: BorderRadius.circular(10.0),
+            borderSide: BorderSide(
+                color: Colors.yellow,
+                width: 2
             )
         ),
         prefixIcon: prefixWidget,
-        suffixIcon: filledColor==false? IconButton(onPressed: (){suffixFunction!();}, icon: Icon(suffixIcon,color: Colors.white,),):Container(),
       ),
       style:GoogleFonts.roboto(
         color: filledColor==false? Colors.white:Colors.black,
-        fontSize:  filledColor==false? MediaQuery.of(context).size.height*0.022:MediaQuery.of(context).size.height*0.04,
+        fontSize:  filledColor==false? MediaQuery.of(context).size.height*0.022:MediaQuery.of(context).size.height*0.035,
       ),
       maxLines: maxLines,
       controller: controller,
