@@ -78,6 +78,7 @@ class AppCubit extends Cubit<AppStates>{
       getAllMatches(doc: doc);
       emit(UpdateMatchSuccessState());
 
+
     }).catchError((error){
 
       debugPrint('Error in update match is ${error.toString()}');
