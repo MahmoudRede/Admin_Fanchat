@@ -1,0 +1,217 @@
+
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
+
+Widget textFormFieldWidget({
+  context,
+  required TextEditingController controller,
+  required TextInputType inputType,
+  required String labelText,
+  required String errorMessage,
+  Widget? prefixIcon,
+  Function? function,
+  bool enable=true,
+  int? maxLines,
+}) =>
+    Container(
+      color: HexColor('#000f2c').withOpacity(.6),
+      // height:MediaQuery.of(context).size.height*.07,
+      child: TextFormField(
+        style: TextStyle(
+          color: Colors.grey,
+        ),
+        keyboardType: inputType,
+        enabled: enable,
+        controller: controller,
+        onChanged: (value) {
+          function!;
+        },
+        decoration: InputDecoration(
+          focusColor: Colors.grey,
+          fillColor: Colors.white,
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: HexColor('#ffef00')),
+          ),
+          border: const OutlineInputBorder(),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: HexColor('#ffef00')),
+          ),
+          hintText: labelText,
+          hintStyle: TextStyle(
+            color: Colors.grey,
+          ),
+          prefixIcon: prefixIcon,
+        ),
+        maxLines: maxLines,
+        validator: (value) {
+          if (value!.isEmpty) {
+            return errorMessage;
+          }
+          return null;
+        },
+      ),
+    );
+
+Widget defaultButton({
+  required double width,
+  required double height,
+  required Color buttonColor,
+  required Color textColor,
+  required String buttonText,
+  required VoidCallback function,
+  double raduis = 25,
+  double fontSize = 18,
+}) =>
+    Container(
+        height: height,
+        width: width,
+        decoration: BoxDecoration(
+            color: buttonColor,
+            borderRadius: BorderRadius.circular(raduis),
+            border: Border.all(color: Colors.white, width: 1)),
+        child: TextButton(
+          onPressed: function,
+          child: Text(
+            buttonText,
+            style: GoogleFonts.roboto(
+                color: textColor,
+                fontWeight: FontWeight.w600,
+                fontSize: fontSize),
+          ),
+        ));
+
+Widget defaultSocialMediaButton(
+        {context,
+        required Size size,
+        required Color buttonColor,
+        required String buttonText,
+        required VoidCallback function,
+        required String imagePath}) =>
+    Container(
+        height: size.height * (.05),
+        width: size.width * (.4),
+        decoration: BoxDecoration(
+            color: buttonColor,
+            borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: Colors.grey)),
+        child: TextButton(
+          onPressed: function,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                buttonText,
+                style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 14),
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * .02,
+              ),
+              Image.asset(
+                imagePath,
+                width: 45,
+                height: 45,
+              ),
+            ],
+          ),
+        ));
+//
+customAppbar(String title, context) {
+  return AppBar(
+    systemOverlayStyle: SystemUiOverlayStyle(
+      statusBarIconBrightness: Brightness.light,
+      statusBarColor: Color(0Xff000f2c),
+    ),
+    iconTheme: IconThemeData(color: Colors.white),
+    backgroundColor: Color(0Xff000f2c),
+    // leading: title != 'payPackage'
+    //     ? IconButton(
+    //         onPressed: () {
+    //
+    //         },
+    //         icon: Icon(
+    //           Icons.menu,
+    //           size: 30,
+    //           color: AppColors.myGrey,
+    //         ))
+    //     : Container(),
+    title: GestureDetector(
+      onTap: () {
+
+      },
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height * 1,
+        width: MediaQuery.of(context).size.width * .25,
+        child: const Image(
+          image: AssetImage('assets/images/ncolors.png'),
+          height: 100,
+          width: 100,
+        ),
+      ),
+    ),
+    centerTitle: true,
+    elevation: 0.0,
+  );
+}
+
+
+// customUpdateAppbar(String title, context) {
+//   return AppBar(
+//     systemOverlayStyle: SystemUiOverlayStyle(
+//       statusBarIconBrightness: Brightness.light,
+//       statusBarColor: AppColors.primaryColor1,
+//     ),
+//     iconTheme: IconThemeData(color: AppColors.myWhite),
+//     backgroundColor: AppColors.primaryColor1,
+//     leading: IconButton(
+//             onPressed: (){
+//               Navigator.pop(context);
+//             },
+//             icon: const Icon(Icons.arrow_back_ios,color: Colors.white,)
+//         ),
+//
+//     title: GestureDetector(
+//       onTap: () {
+//         AppCubit.get(context).currentIndex = 0;
+//         AppCubit.get(context).getPosts();
+//         Navigator.push(
+//           context,
+//           MaterialPageRoute(
+//             builder: (_) {
+//               return const HomeLayout();
+//             },
+//           ),
+//         );
+//       },
+//       child: SizedBox(
+//         height: MediaQuery.of(context).size.height * 1,
+//         width: MediaQuery.of(context).size.width * .25,
+//         child: const Image(
+//           image: AssetImage('assets/images/ncolors.png'),
+//           height: 100,
+//           width: 100,
+//         ),
+//       ),
+//     ),
+//     centerTitle: true,
+//     elevation: 0.0,
+//     actions: const [],
+//   );
+// }
+
+printMessage(String title) {
+  debugPrint(title);
+}
+
+customToast({required String title, required Color color}) {
+  Fluttertoast.showToast(
+      msg: title,
+      textColor: Colors.white,
+      backgroundColor: color,
+      gravity: ToastGravity.TOP);
+}
