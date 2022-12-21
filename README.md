@@ -1,16 +1,8 @@
 # fanchat_admin
 
-A new Flutter project.
+<h1 align="center">Admin Application</h1>
+<h4 align="left">Allow to admin controll in fanchat app and add new matches or update score of matches,built with Flutter , Bloc , Firebase</h4>
 
-## Getting Started
+<h3 align="left">Splash Screen</h3>
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img align="center" width="300" src="https://firebasestorage.googleapis.com/v0/b/convergence-170ff.appspot.com/o/WhatsApp%20Image%202022-12-21%20at%208.29.18%20PM.jpeg?alt=media&token=393e9355-6e05-4453-8255-c527cc07ffc9" alt="mahmoudreda" />
